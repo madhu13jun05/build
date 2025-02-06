@@ -2,17 +2,20 @@ pipeline {
     agent any
 
     stages {
-        stage('Build and Push Docker Image') {
+        stage('Checkout SCM') {
             steps {
-                // Grant executable permissions to the build script
-                sh 'chmod +x deploy.sh'
-
-                // Build the Docker image using the build script
-                sh './deploy.sh'
-
-                
+                checkout scm    // Checkout the code from the repository
             }
         }
 
+        stage('Build and Push Docker Image') {
+            steps {
+                // Grant executable permissions to the deploy script
+                sh 'chmod +x deploy.sh'
+                
+                // Execute the deploy script
+                sh './deploy.sh'
+            }
+        }
     }
 }
