@@ -1,8 +1,6 @@
----
 version: '3'
 services:
-react-capstone:
-image: "react-capstone"
-ports:
-- "81:80"
----
+  react-capstone:
+    image: "madhu1306/task2"   # Reference the correct Docker image you pushed
+    ports:
+      - "8085:80"   # Expose port 80 from the container to port 8085 on the host
